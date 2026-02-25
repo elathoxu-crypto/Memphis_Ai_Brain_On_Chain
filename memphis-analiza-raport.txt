@@ -1,0 +1,207 @@
+================================================================================
+                    ANALIZA PROJEKTU MEMPHIS
+                    Raport wygenerowany: 2026-02-17 15:15
+================================================================================
+
+1. WSTĘP
+--------
+Projekt Memphis to "Local-first AI brain with persistent memory chains" -
+lokalny system pamięci AI oparty na strukturze łańcucha bloków (blockchain-like).
+
+Źródło: Prompt od Opus 4.6 (Claude)
+Lokalizacja: ~/memphis/
+Status: ISTNIEJĄCY PROJEKT (już zbudowany)
+
+
+2. STRUKTURA PROJEKTU
+----------------------
+
+Katalogi:
+- src/cli/commands/    - Komendy CLI (journal, ask, recall, status, init, agent, vault)
+- src/memory/           - chain.ts, store.ts, query.ts (rdzeń pamięci blockchain)
+- src/config/          - Konfiguracja (defaults.ts, loader.ts)
+- src/providers/       - Providerzy LLM (ollama, minimax, openrouter)
+- src/bridges/         - Mosty (cline, openclaw)
+- src/agents/          - Agenci (autosave)
+- src/utils/           - Narzędzia (hash, logger, crypto)
+- src/tui/             - Interfejs TUI
+- tests/               - Testy jednostkowe
+- .github/workflows/   - CI/CD (test.yml, publish.yml)
+
+
+3. TECHONOLOGIE
+---------------
+- TypeScript (strict mode)
+- Node.js (ES2022, ES modules)
+- Commander (CLI framework)
+- Chalk (kolorowanie terminala)
+- YAML (konfiguracja)
+- Zod (walidacja)
+- Vitest (testy)
+- Blessed/Ink (TUI)
+
+
+4. CORE: PAMIĘĆ BLOCKCHAIN
+---------------------------
+
+Struktura Block:
+- index: numer bloku
+- timestamp: ISO 8601
+- chain: nazwa łańcucha (journal, build, adr, ops, vault)
+- data: BlockData (type, content, tags, agent, provider, tokens_used)
+- prev_hash: hash poprzedniego bloku
+- hash: SHA-256 bieżącego bloku
+
+Funkcje:
+- createBlock(): tworzenie nowego bloku z hashem
+- verifyBlock(): weryfikacja pojedynczego bloku
+- verifyChain(): weryfikacja całego łańcucha
+- validateBlockAgainstSoul(): walidacja SOUL (rozszerzona)
+
+Typy bloków (ALLOWED_TYPES):
+- journal: wpisy dziennika
+- build: logi budowania
+- adr: Architecture Decision Records
+- ops: operacje
+- ask: pytania do AI
+- system: zdarzenia systemowe
+- vault: zaszyfrowane dane (SSI)
+- credential: poświadczenia (SSI)
+
+
+5. STAN OBECNY
+--------------
+
+Łańcuchy:
+- journal: 173 bloki (000000-000172)
+- vault: 3 bloki (000000-000002)
+
+Git:
+- Branch: master
+- Status: są niecommitowane zmiany w:
+  * src/bridges/openclaw.ts
+  * src/cli/commands/ask.ts
+  * src/config/loader.ts
+  * src/memory/store.ts
+  * src/providers/minimax.ts
+  + odpowiednie pliki w dist/
+
+Konfiguracja: ~/.memphis/config.yaml (istnieje)
+
+
+6. BRIDGE: OPENCLAW
+-------------------
+Plik: src/bridges/openclaw.ts
+Status: W ROZBUDOWIE (zmieniony, niecommitowany)
+
+To jest kluczowe dla Twojego zadania!
+OpenClaw to Twój obecny system - Memphis ma z nim most.
+
+
+7. PROVIDERZY LLM
+-----------------
+- ollama: lokalny (http://localhost:11434/v1)
+- minimax: API zewnętrzne (https://api.minimax.chat/v1)
+- openrouter: agregator (https://openrouter.ai/api/v1)
+
+Konfiguracja w ~/.memphis/config.yaml
+
+
+8. CI/CD: GITHUB ACTIONS
+------------------------
+
+test.yml:
+- Uruchamia vitest na Node.js 20
+
+publish.yml:
+- Buduje projekt (npm run build)
+- Publikuje na GitHub Packages (@elathoxu-crypto/memphis)
+- Wymaga: GITHUB_TOKEN
+
+
+9. MOŻLIWE KROKI ROZWOJU (DO WYKONANIA)
+----------------------------------------
+
+A) INTEGRACJA Z OPENCLAW (priorytet!)
+   - Zakończyć most openclaw.ts
+   - Przetestować komunikację
+   - Dodać autentykację
+
+B) PIPELINE PUBLIKACJI (Twoje zadanie)
+   - Utworzyć/GitHub repo
+   - Skonfigurować secrets (GH_TOKEN)
+   - Uruchomić publish workflow
+   - Zweryfikować publikację na GitHub Packages
+
+C) ROZBUDOWA PROVIDERÓW
+   - Dodać więcej LLM (anthropic, openai, google)
+   - Dodać obsługę streaming
+   - Dodać retry logic
+
+D) FUNKCJONALNOŚĆ
+   - TUI (interfejs graficzny w terminalu)
+   - Autosave agent
+   - Vault (szyfrowanie, SSI)
+   - Więcej komend CLI
+
+E) TESTY I DOKUMENTACJA
+   - Pokrycie testami
+   - README.md
+   - ADR (Architecture Decision Records)
+
+
+10. REKOMENDACJE
+----------------
+
+KROK 1: Zakończ integrację OpenClaw
+   - Masz gotowy kod w src/bridges/openclaw.ts (zmiany niecommitowane)
+   - Wymaga: MINIMAX_API_KEY i MINIMAX_GROUP_ID w .env
+
+KROK 2: Skonfiguruj Git (repo już istnieje na GitHub)
+   - Repo: https://github.com/elathoxu-crypto/memphis
+   - Są niecommitowane zmiany - do commit?
+
+KROK 3: Uruchom pipeline publish
+   - Utwórz Release na GitHub (workflow publish.yml uruchomi się automatycznie)
+   - LUB: workflow_dispatch (ręcznie)
+
+KROK 4: Testuj i rozwijaj
+
+
+11. KROKI DO WYKONANIA TERAZ
+-----------------------------
+
+A) Commit zmian (albo wyrzuć):
+   cd ~/memphis
+   git add -A
+   git commit -m "feat: Add MiniMax LLM to OpenClaw bridge"
+
+B) Utwórz Release na GitHub (żeby workflow publish się wykonał):
+   - Idź na https://github.com/elathoxu-crypto/memphis/releases
+   - New release
+   - Tag: v1.0.1
+   - Title: Release v1.0.1
+   - Publish
+
+C) ALBO użyj workflow_dispatch (bez tworzenia release):
+   - GitHub > Actions > Publish to GitHub Packages > Run workflow
+
+
+12. STATUS TECHNICZNY
+---------------------
+
+✓ Projekt istnieje i jest zbudowany
+✓ Testy przechodzą (9/9)
+✓ Git repo skonfigurowane (origin: github.com/elathoxu-crypto/memphis)
+✓ Workflow CI/CD gotowy (test.yml, publish.yml)
+✓ Registry: GitHub Packages (@elathoxu-crypto/memphis)
+✓ Konfiguracja: ~/.memphis/config.yaml
+
+⚠ Niecommitowane zmiany (5 plików)
+⚠ MiniMax wymaga API key (nie skonfigurowane)
+⚠ OpenClaw bridge w trakcie rozbudowy
+
+
+================================================================================
+                         KONIEC RAPORTU
+================================================================================

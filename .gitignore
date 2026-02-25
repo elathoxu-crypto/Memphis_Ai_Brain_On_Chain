@@ -1,0 +1,40 @@
+# OpenClaw runtime and private config
+.openclaw/
+.clawhub/
+.pi/
+
+# Sensitive keys / certs
+cert.pem
+key.pem
+*.key
+*.pem
+
+# Memphis local brain data
+memphis/.git/
+memphis/.memphis/
+memphis/ollama*
+memphis/.cache/
+memphis/.logs/
+memphis/.tmp/
+
+# Personal memory + logs
+memory/
+memphis-session-log.json
+memphis-status.html
+memphis_brain_memory_chains.md
+memphis_offline_project_roadmap.md
+MEMPHIS_16CHAINS.md
+
+# System/home shortcuts
+~/
+*~
+.DS_Store
+
+# Node / build artifacts
+node_modules/
+dist/
+*.log
+
+# Misc editor files
+.vscode/
+.idea/
