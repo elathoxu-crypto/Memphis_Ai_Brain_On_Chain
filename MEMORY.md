@@ -1,6 +1,154 @@
 # MEMORY.md - Long-term Memory
 
-*Last updated: 2026-03-02 18:30 CET*
+*Last updated: 2026-03-02 10:05 CET*
+
+---
+
+## 2026-03-02 (Morning) — TUI Polish + Real Data Loading ✅
+
+### TUI Bug Fix (v1.7.2) ✅
+
+**Critical bug fixed:**
+```typescript
+// src/tui/nexus-poc.ts:113
+this.editor.clear();  // ← REMOVED (pi-tui doesn't have this method)
+```
+
+**Impact:** TUI no longer crashes on Enter key
+
+**Commit:** `d657a13` — feat(tui): load real chain data + polish status bar
+
+---
+
+### TUI Status Bar Polish ✅
+
+**Before:**
+```
+Agents: 🔥Watra 🧠Memphis | Chains: 880+ blocks | Provider: ollama | ⏱️ 09:47
+```
+
+**After:**
+```
+📚 834 journal │ Last: 17m ago │ ✓ ollama/qwen2.5-coder │ 🧠 54 learned │ [q] quit [h] help │ ⏱️ 09:58
+```
+
+**Enhancements:**
+1. ✅ **Real block counts** — reads from `~/.memphis/chains/journal/`
+2. ✅ **Time since last activity** — formats as 17m ago / 2h ago / 3d ago
+3. ✅ **Provider status** — shows provider name + model (ollama/qwen2.5-coder)
+4. ✅ **Learning stats** — reads from `~/.memphis/intelligence/learning-data.json`
+5. ✅ **Keyboard hints** — context-aware shortcuts
+
+---
+
+### Chat History Enhancements ✅
+
+**Before:**
+- Hardcoded demo messages
+- "(empty)" placeholders
+
+**After:**
+- Loads last 5 Q&A pairs from ask chain
+- Proper formatting (👤 User / 🧠 Memphis)
+- Truncates long responses (150 chars)
+- Shows conversation history
+
+---
+
+### New Functions Added
+
+**Chain Stats Loader:**
+```typescript
+loadChainStats(): {
+  journal: number,
+  ask: number,
+  decisions: number,
+  summary: number,
+  lastActivity: Date | null
+}
+```
+
+**Intelligence Stats Loader:**
+```typescript
+loadIntelligenceStats(): {
+  acceptedPatterns: number,
+  rejectedPatterns: number,
+  totalFeedback: number
+}
+```
+
+**Provider Status Loader:**
+```typescript
+loadProviderStatus(): {
+  name: string,
+  model: string,
+  ready: boolean
+}
+```
+
+**Recent Messages Loader:**
+```typescript
+loadRecentMessages(count: number): NexusMessage[]
+```
+
+**Time Formatter:**
+```typescript
+formatTimeSince(date: Date): string // "17m ago", "2h ago", "3d ago"
+```
+
+---
+
+### TUI Enhancement Ideas (Future)
+
+**Completed ✅:**
+1. ✅ **Real data** — loads from chains
+2. ✅ **Suggestions queue** — shows pending time-based triggers
+3. ✅ **Quick journal shortcut** — /j <text> for quick entry
+4. ✅ **Typing indicator** — "Memphis is thinking..."
+5. ✅ **Context-aware hints** — keyboard shortcuts in status bar
+
+**High Priority (Next):**
+6. ⏳ **Search Integration** — `/search <query>` → inline recall results
+7. ⏳ **Recall Widget** — show similar messages inline
+8. ⏳ **Auto-complete** — Tab completion for commands
+
+**Medium Priority:**
+9. ⏳ **Sync Status** — 🔄 Syncing / ✅ Synced (5m ago)
+10. ⏳ **Embeddings Stats** — Cache: 87% hit rate
+11. ⏳ **Daemon Status** — 👁️ Daemon: running
+12. ⏳ **Message Actions** — [r] recall, [j] journal, [d] decision
+
+**Low Priority:**
+13. ⏳ **Themes** — Dark/Light mode toggle
+14. ⏳ **Animations** — Smooth transitions
+15. ⏳ **Split View** — Chat left, journal right
+
+---
+
+### Implementation Status
+
+**Phase 1 (Done):**
+- ✅ Fix crash bug
+- ✅ Load real data
+- ✅ Polish status bar
+- ✅ Show actual chat history
+
+**Phase 2 (Done):**
+- ✅ Add suggestions queue widget
+- ✅ Implement typing indicator
+- ✅ Add keyboard shortcuts (/j, /a, /d)
+- ✅ Context-aware status bar
+
+**Phase 3 (Next):**
+- ⏳ Integrate search (/search → recall)
+- ⏳ Auto-complete for commands
+- ⏳ Recall similar messages inline
+
+---
+
+**Session:** 9:47-10:10 CET (23 min)
+**Commits:** 3 (883171d, d657a13, f0081ad)
+**Status:** TUI enhanced with suggestions + quick actions
 
 ---
 
