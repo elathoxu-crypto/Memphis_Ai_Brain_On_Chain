@@ -1,10 +1,92 @@
 # MEMORY.md - Long-term Memory
 
-*Last updated: 2026-03-02 11:01 CET*
+*Last updated: 2026-03-02 11:21 CET*
 
 ---
 
-## 2026-03-02 (Morning Session COMPLETE) — v1.7.2 RELEASED! 🎉
+## 2026-03-02 (Morning Session COMPLETE) — v1.7.2 + TUI Phase 3 ✅
+
+### 🚀 RELEASE + NEW FEATURES
+
+**Release:** v1.7.2 (11:01 CET)
+**Features:** TUI Phase 3 (11:06-11:21 CET)
+
+**Session Timeline:**
+- 9:47-11:01 — v1.7.2 release (wizard, doctor, ZAI, fixes)
+- 11:06-11:21 — TUI Phase 3 (search, sync status, recall widget)
+
+---
+
+## 11:06 CET — TUI Phase 3 Features IMPLEMENTED ✅
+
+**Features Built (3/4 complete):**
+
+1. ✅ **Search Integration** — /search <query> → inline recall results
+   - Uses semantic search across all chains
+   - Shows relevance scores (🎯 >80%, ✓ >60%, ○ <60%)
+   - Top 5 results with snippet preview
+   - Aliases: /search, /recall, /s
+
+2. ❌ **Auto-complete** — Tab completion (NOT IMPLEMENTED)
+   - pi-tui doesn't support tab completion
+   - Would require custom implementation
+   - Deferred to future enhancement
+
+3. ✅ **Recall Widget** — Show similar messages inline
+   - Auto-triggers when content > 10 chars
+   - Filters by score > 0.7 (70% relevance)
+   - Shows snippet preview with [score%]
+   - ESC to dismiss
+
+4. ✅ **Sync Status** — 🔄 Syncing / ✅ Synced in status bar
+   - Shows network sync state
+   - Checks network-chain.jsonl timestamp
+   - Command: /sync — detailed status
+   - Status indicators: 🔄 (active), ✅ (synced), ○ (not configured)
+
+**New Commands:**
+- /search <query> — Semantic search
+- /recall <query> — Alias for search
+- /s <query> — Short alias
+- /sync — Show sync status
+
+**Status Bar Updated:**
+```
+📚 834 journal │ Last: 17m ago │ ✓ ollama/qwen2.5-coder │ 🧠 54 learned │ 💡 2 │ ✅ │ [q] quit
+```
+
+**Technical Details:**
+- Added Store import with proper initialization
+- Integrated recall() from src/core/recall.ts
+- Added loadSimilarMessages() method
+- Added updateSimilarMessagesWidget() method
+- Added getSyncStatus() method
+- Added showSyncStatus() method
+- Added searchMemories() async method
+
+**Example Output:**
+```
+/search meeting
+🔍 Found 12 results for "meeting":
+  🎯 [89%] journal#45 — Meeting with John about Project X...
+  ✓ [75%] journal#23 — Weekly team meeting scheduled...
+  ○ [65%] ask#12 — What meetings do I have?
+```
+
+**Impact:**
+- Search: Instant access to semantic memory
+- Recall widget: Proactive context suggestions
+- Sync status: Network visibility
+
+**Commit:** 3190e14
+**Time:** 15 minutes (11:06-11:21)
+**Status:** 3/4 features complete (auto-complete deferred)
+
+---
+
+## 11:01 CET — v1.7.2 RELEASED! 🎉
+
+**Release published to GitHub!**
 
 ### 🚀 RELEASE PUBLISHED
 
