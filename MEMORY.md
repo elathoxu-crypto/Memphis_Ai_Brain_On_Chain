@@ -1,17 +1,36 @@
 # MEMORY.md - Long-term Memory
 
-*Last updated: 2026-03-02 10:56 CET*
+*Last updated: 2026-03-02 11:01 CET*
 
 ---
 
-## 2026-03-02 (Morning Session COMPLETE) — All Priorities Done + Major Discovery ✅
+## 2026-03-02 (Morning Session COMPLETE) — v1.7.2 RELEASED! 🎉
+
+### 🚀 RELEASE PUBLISHED
+
+**Tag:** v1.7.2
+**Commit:** f59ae39
+**GitHub:** https://github.com/elathoxu-crypto/memphis/releases/tag/v1.7.2
+**Status:** ✅ Production-ready
+
+**Release Assets:**
+- Source code (tagged)
+- Release notes (9KB)
+- Changelog (complete v1.7.2 section)
+- Quickstart guide (6KB)
+- Feature inventory (10KB)
+
+**Stability:** Backward compatible (no breaking changes)
+**Testing:** Doctor 9/9 checks pass, init wizard works, TUI stable
+
+---
 
 ### Session Summary 🎉
 
-**Time:** 70 min (9:47-10:55 CET)
-**Commits:** 7
-**Files Changed:** 16
-**Lines Added:** ~2,000
+**Time:** 74 min (9:47-11:01 CET)
+**Commits:** 9
+**Files Changed:** 19
+**Lines Added:** ~3,500
 **Lines Removed:** ~150
 
 ### 🚨 MAJOR DISCOVERY: Memphis is 95% Complete!
