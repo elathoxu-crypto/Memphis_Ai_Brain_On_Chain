@@ -1,0 +1,29 @@
+{
+  "index": 1,
+  "timestamp": "2026-02-26T00:15:51.129Z",
+  "chain": "immortals",
+  "data": {
+    "type": "build",
+    "content": "BUILD: logs-efemerald blueprint",
+    "tags": [
+      "logs",
+      "immortal",
+      "blueprint"
+    ],
+    "spec": {
+      "name": "logs-efemerald",
+      "purpose": "Ephemeral diagnostics chain",
+      "ttl": "5m",
+      "lifecycle": [
+        "collect",
+        "review",
+        "burn"
+      ],
+      "collectScript": "~/memphis/scripts/collect-logs.sh",
+      "burnScript": "~/memphis/scripts/burn-logs.sh",
+      "notes": "Derived from legacy blueprint; conforms to SOUL types"
+    }
+  },
+  "prev_hash": "972cd425375bf3f6394f3048c66516f42dfddcc273ac3da5034c0c5b15ebca79",
+  "hash": "6b135c8bcff57b925466441898bb1cb2ea0c558b782528f30fef6f3b4bcb0000"
+}

@@ -19,6 +19,7 @@ memphis/.tmp/
 
 # Personal memory + logs
 memory/
+logs/
 memphis-session-log.json
 memphis-status.html
 memphis_brain_memory_chains.md
@@ -34,6 +35,9 @@ MEMPHIS_16CHAINS.md
 node_modules/
 dist/
 *.log
+
+# Embedded git-based skills
+skills/memphis/
 
 # Misc editor files
 .vscode/

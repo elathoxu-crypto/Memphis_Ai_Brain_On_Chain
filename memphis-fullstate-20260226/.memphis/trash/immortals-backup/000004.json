@@ -1,0 +1,23 @@
+{
+  "index": 4,
+  "timestamp": "2026-02-26T00:45:11.648Z",
+  "chain": "immortals",
+  "data": {
+    "type": "ops",
+    "content": "logs-efemerald capture workflow",
+    "tags": [
+      "capture",
+      "immortal",
+      "logs",
+      "update"
+    ],
+    "spec": {
+      "trigger": "~/memphis/scripts/capture-fail.sh",
+      "condition": "manual user trigger (fail panic button)",
+      "autoBurn": true,
+      "ttl": "5m"
+    }
+  },
+  "prev_hash": "b799ebee9ceb63bfd3f24ef5c02a93824e8aec66bbd3e18368cab9b89300a28e",
+  "hash": "a3256fbbc0c47eb6148f3726bfb28b308c5b2dfedfb317b48131ed76f7ac665d"
+}

@@ -1,0 +1,16 @@
+{
+  "index": 0,
+  "timestamp": "2026-02-26T00:13:10Z",
+  "chain": "immortals",
+  "data": {
+    "type": "ops",
+    "content": "Immortals genesis restored",
+    "tags": [
+      "immortal",
+      "reset"
+    ],
+    "agent": "repair"
+  },
+  "prev_hash": "0000000000000000000000000000000000000000000000000000000000000000",
+  "hash": "972cd425375bf3f6394f3048c66516f42dfddcc273ac3da5034c0c5b15ebca79"
+}

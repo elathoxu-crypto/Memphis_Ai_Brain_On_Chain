@@ -2,52 +2,6 @@
 
 Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
 
-## Memphis
-
-- **Repo:** ~/memphis
-- **Model:** ~/.openclaw/workspace/memphis/PROJECT_MODEL.md
-
-## Memphis + Cline - Współpraca
-
-### Architektura:
-
-```
-┌─────────────────────────────────────────────────┐
-│                   TY (Memphis)                  │
-│              ↕ (komunikuje się)                 │
-├─────────────────────┬───────────────────────────┤
-│    MEMPHIS          │        CLINE              │
-│    (AI Brain)       │    (Coding Agent)         │
-│    - pamięć        │    - wykonuje             │
-│    - kontekst       │    - koduje               │
-│    - wizja         │    - buduje               │
-│    = SKRZYDŁA      │    = RĘCE                 │
-└─────────────────────┴───────────────────────────┘
-```
-
-### Użycie:
-
-```bash
-# Cline - zawsze z katalogiem ~/memphis
-cd ~/memphis && cline -t 60 "task"
-
-# Memphis CLI
-cd ~/memphis && npx tsx src/cli/index.ts ask "pytanie"
-```
-
-### Memphis Bridge (dla Cline):
-
-```bash
-# Dodaj wpis do pamięci
-npx tsx src/bridges/cline.ts journal "Cline: zrobiłem refaktoryzację..."
-
-# Szukaj w pamięci  
-npx tsx src/bridges/cline.ts recall "refaktoryzacja"
-
-# Status chain
-npx tsx src/bridges/cline.ts status
-```
-
 ## What Goes Here
 
 Things like:

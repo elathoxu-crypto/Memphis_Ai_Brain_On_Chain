@@ -1,0 +1,11 @@
+# Memphis configuration - LOCAL ONLY
+
+providers:
+  ollama:
+    url: http://localhost:11434/v1
+    model: qwen2.5-coder:3b
+    role: primary
+
+memory:
+  path: /home/memphis_ai_brain_on_chain/.memphis/chains
+  auto_git: false

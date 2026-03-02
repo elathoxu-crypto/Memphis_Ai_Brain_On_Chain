@@ -1,0 +1,4 @@
+- Autosummary włączona (summary#000000) po usunięciu locka
+- share replicator: brak manifestów, trzeba zainicjować (plan/push/pull) i logować wyniki
+- heartbeat: potrzebne podpięcie scripts/heartbeat-soul.sh (cron/heartbeat)
+- journale: dodać tagi workflow/share/semantics

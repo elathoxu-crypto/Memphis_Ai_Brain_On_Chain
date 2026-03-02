@@ -207,18 +207,6 @@ Think of it like a human reviewing their journal and updating their mental model
 
 The goal: Be helpful without being annoying. Check in a few times a day, do useful background work, but respect quiet time.
 
-## ⚡ Cline (Coding Agent)
-
-**IMPORTANT:** Cline must ALWAYS run in the correct directory:
-
-```bash
-# Always use one of these:
-cd ~/memphis && cline -t 60 "task description"
-cline -c ~/memphis -t 60 "task"
-```
-
-**Never run Cline without specifying `~/memphis`!**
-
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.

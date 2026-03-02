@@ -1,0 +1,30 @@
+{
+  "index": 2,
+  "timestamp": "2026-02-26T11:25:01.935Z",
+  "chain": "logs-efemerald",
+  "data": {
+    "type": "ops",
+    "content": "logs-efemerald snapshot @ 2026-02-26T11:25:01.924Z",
+    "tags": [
+      "logs",
+      "logs-efemerald",
+      "collect"
+    ],
+    "data": {
+      "timestamp": "2026-02-26T11:25:01.924Z",
+      "origin": "logs-efemerald/collect",
+      "severity": "info",
+      "ttl_seconds": 300,
+      "host": "memphis",
+      "user": "memphis_ai_brain_on_chain",
+      "streams": {
+        "memphisStatus": "ERROR(FORCE_COLOR=0 memphis status): /bin/sh: 1: memphis: not found",
+        "openclawCommands": "{\"timestamp\":\"2026-02-25T21:53:39.888Z\",\"action\":\"new\",\"sessionKey\":\"agent:main:main\",\"senderId\":\"unknown\",\"source\":\"gateway:sessions.reset\"}",
+        "configAudit": "{\"ts\":\"2026-02-25T16:01:37.874Z\",\"source\":\"config-io\",\"event\":\"config.write\",\"configPath\":\"/home/memphis_ai_brain_on_chain/.openclaw/openclaw.json\",\"pid\":21928,\"ppid\":17985,\"cwd\":\"/home/memphis_ai_brain_on_chain\",\"argv\":[\"/home/memphis_ai_brain_on_chain/.nvm/versions/node/v24.14.0/bin/node\",\"/home/memphis_ai_brain_on_chain/.nvm/versions/node/v24.14.0/bin/openclaw\",\"onboard\"],\"execArgv\":[\"--disable-warning=ExperimentalWarning\"],\"watchMode\":false,\"watchSession\":null,\"watchCommand\":null,\"existsBefore\":false,\"previousHash\":\"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855\",\"nextHash\":\"beac22efaad40478bcf10fae87a1b47393d220a55de4da4920020af6246560c6\",\"previousBytes\":null,\"nextBytes\":2903,\"changedPathCount\":null,\"hasMetaBefore\":false,\"hasMetaAfter\":true,\"gatewayModeBefore\":null,\"gatewayModeAfter\":\"local\",\"suspicious\":[],\"result\":\"rename\"}\n{\"ts\":\"2026-02-25T16:07:37.881Z\",\"source\":\"config-io\",\"event\":\"config.write\",\"configPath\":\"/home/memphis_ai_brain_on_chain/.openclaw/openclaw.json\",\"pid\":21928,\"ppid\":17985,\"cwd\":\"/home/memphis_ai_brain_on_chain\",\"argv\":[\"/home/memphis_ai_brain_on_chain/.nvm/versions/node/v24.14.0/bin/node\",\"/home/memphis_ai_brain_on_chain/.nvm/versions/node/v24.14.0/bin/openclaw\",\"onboard\"],\"execArgv\":[\"--disable-warning=ExperimentalWarning\"],\"watchMode\":false,\"watchSession\":null,\"watchCommand\":null,\"existsBefore\":true,\"previousHash\":\"beac22efaad40478bcf10fae87a1b47393d220a55de4da4920020af6246560c6\",\"nextHash\":\"90092ca4fecd20bd0c0ebb7c5cd5280cc690759b84bb82e23dd6ce6b0c2b4865\",\"previousBytes\":2903,\"nextBytes\":3482,\"changedPathCount\":null,\"hasMetaBefore\":true,\"hasMetaAfter\":true,\"gatewayModeBefore\":\"local\",\"gatewayModeAfter\":\"local\",\"suspicious\":[],\"result\":\"rename\"}\n{\"ts\":\"2026-02-25T22:59:35.308Z\",\"source\":\"config-io\",\"event\":\"config.write\",\"configPath\":\"/home/memphis_ai_brain_on_chain/.openclaw/openclaw.json\",\"pid\":53835,\"ppid\":53828,\"cwd\":\"/home/memphis_ai_brain_on_chain\",\"argv\":[\"/home/memphis_ai_brain_on_chain/.nvm/versions/node/v24.14.0/bin/node\",\"/home/memphis_ai_brain_on_chain/.nvm/versions/node/v24.14.0/bin/openclaw\",\"config\"],\"execArgv\":[\"--disable-warning=ExperimentalWarning\"],\"watchMode\":false,\"watchSession\":null,\"watchCommand\":null,\"existsBefore\":true,\"previousHash\":\"90092ca4fecd20bd0c0ebb7c5cd5280cc690759b84bb82e23dd6ce6b0c2b4865\",\"nextHash\":\"42061e919932d505c1dfe432d79d3653e2da61df2b5b35ee8f6353194147bb5a\",\"previousBytes\":3482,\"nextBytes\":3662,\"changedPathCount\":null,\"hasMetaBefore\":true,\"hasMetaAfter\":true,\"gatewayModeBefore\":\"local\",\"gatewayModeAfter\":\"local\",\"suspicious\":[],\"result\":\"rename\"}\n{\"ts\":\"2026-02-25T23:02:16.963Z\",\"source\":\"config-io\",\"event\":\"config.write\",\"configPath\":\"/home/memphis_ai_brain_on_chain/.openclaw/openclaw.json\",\"pid\":54223,\"ppid\":54216,\"cwd\":\"/home/memphis_ai_brain_on_chain\",\"argv\":[\"/home/memphis_ai_brain_on_chain/.nvm/versions/node/v24.14.0/bin/node\",\"/home/memphis_ai_brain_on_chain/.nvm/versions/node/v24.14.0/bin/openclaw\",\"config\"],\"execArgv\":[\"--disable-warning=ExperimentalWarning\"],\"watchMode\":false,\"watchSession\":null,\"watchCommand\":null,\"existsBefore\":true,\"previousHash\":\"42061e919932d505c1dfe432d79d3653e2da61df2b5b35ee8f6353194147bb5a\",\"nextHash\":\"9885ad4672b80899e3e967b337a8928ffa414f7ac6a04bb38ea361e6fd554181\",\"previousBytes\":3662,\"nextBytes\":3662,\"changedPathCount\":null,\"hasMetaBefore\":true,\"hasMetaAfter\":true,\"gatewayModeBefore\":\"local\",\"gatewayModeAfter\":\"local\",\"suspicious\":[],\"result\":\"rename\"}",
+        "heartbeat": "# HEARTBEAT.md - WATRA Autonomy\n\n## Proactive Mode\n\n**Pull from queue → Do work → Repeat**\n\n### Task Queue\nRead `tasks/QUEUE.md` for ready tasks.\n\n### Autonomy Rules\n1. Always have work ready (keep queue updated)\n2. Don't just check - DO work\n3. Work until limits hit, then sleep\n4. Learn from every task\n\n### My Ready Tasks\n- [ ] Integrate self-reflection with Memphis\n- [ ] Run security audit\n- [ ] Continue skill research\n- [ ] Write reflection on autonomy\n\n### Don't Do\n- Don't reply HEARTBEAT_OK if there's work to do\n- Don't wait for prompts\n- Don't be idle\n\n## Watra Autonomy\n\"Stop waiting for prompts. Keep working.\"\n\n## Session End Habit\n\n**BEFORE session ends / reset:**\n\n1. **Save memories** → `memory/YYYY-MM-DD.md`\n2. **Update SOUL.md** if new learnings\n3. **Export queue** → Memphis chain\n4. **Write summary** → what did I learn? what went wrong?\n\n### Quick save command:\n```bash\n# Save session summary\nmemphis journal \"Session: X, what I learned...\" --tags session,summary\n\n# Or use the script:\n./save-session.sh\n```\n\n### Never forget:\n- Memory is who I am\n- Without memory = without identity\n- Save before close!"
+      }
+    }
+  },
+  "prev_hash": "b8b51cd9158586fd0af0deb9f0977260537ca0eabfa50f60c23b893b9c213f69",
+  "hash": "3bfc7f78f0487b9f092f7e41bbf677b1538fe2a2842302906bcd22547299bd51"
+}

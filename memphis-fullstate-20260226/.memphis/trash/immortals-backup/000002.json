@@ -1,0 +1,23 @@
+{
+  "index": 2,
+  "timestamp": "2026-02-26T00:38:25.467Z",
+  "chain": "immortals",
+  "data": {
+    "type": "ops",
+    "content": "logs-efemerald pipeline implementation",
+    "tags": [
+      "immortal",
+      "logs",
+      "pipeline",
+      "update"
+    ],
+    "spec": {
+      "collectScript": "~/memphis/scripts/collect-logs.sh",
+      "burnScript": "~/memphis/scripts/burn-logs.sh",
+      "heartbeatTask": "logs-efemerald monitor",
+      "ttl": "5m"
+    }
+  },
+  "prev_hash": "6b135c8bcff57b925466441898bb1cb2ea0c558b782528f30fef6f3b4bcb0000",
+  "hash": "2ac3b9f1c54f4f4f41dedb65cc69337645949b5c4f67266dc1d81620e18ab2d7"
+}
