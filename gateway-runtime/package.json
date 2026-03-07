@@ -1,0 +1,14 @@
+{
+  "name": "gateway-runtime",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "start": "node src/index.mjs",
+    "smoke": "node scripts/smoke-runtime.mjs",
+    "simulate:e2e": "node scripts/simulate-e2e.mjs",
+    "smoke:rm060": "node scripts/smoke-rm060.mjs",
+    "smoke:rm061": "node scripts/smoke-rm061.mjs",
+    "smoke:distributed-runtime": "node scripts/smoke-distributed-runtime.mjs"
+  }
+}
