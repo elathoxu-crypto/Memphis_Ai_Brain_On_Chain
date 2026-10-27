@@ -1,6 +1,77 @@
 # MEMORY.md - Long-term Memory
 
-*Last updated: 2026-03-02 11:21 CET*
+*Last updated: 2026-10-27 14:20 CET*
+
+---
+
+## 2026-10-27 — Memphis cockpit (Ratatui) — ADR-011 + Layer 1 shipped ✅
+
+**Where:** `Memphis-Chains/memphis` — PR #698 (design) + PR #699 (implementation), both merged.
+**Repo:** this repo does not hold the code; it holds the findings.
+
+### 🔑 The discovery that makes a second surface cheap
+
+`crates/memphis-tui/src/app.rs` (7 125 LOC) and `client.rs` (1 152 LOC) contain
+**ZERO `ratatui` imports**. The cockpit's brain — state machine, command router,
+worker orchestration, streaming — has no terminal dependency. Only the renderer
+(`ui.rs` + `widgets/`, ~1 630 LOC) does, and the model is semantic (`LineTone` is
+mapped to styles only in `widgets/mod.rs::tone_to_style`).
+
+**A second surface needs a second RENDERER, not a second brain.**
+
+### 📋 The other six findings (measured on the host)
+
+- **Two chat stacks, only one streams.** Rust `ChatStreamEvent::Text` vs TS
+  `stream: false` (`src/providers/index.ts:284`). Both write
+  `operator_chat_messages` with complementary columns. A GUI on the TS path would
+  have had **no streaming**.
+- **The input caret was never rendered.** `Hide` on enter, `Show` only on exit,
+  `set_cursor_position` nowhere in the crate. The prompt was one row → long
+  prompts silently truncated.
+- **The input was strictly append-only.** `Backspace` = `String::pop()`, `Left`/`Right`
+  unbound. A typo in the middle could not be fixed.
+- **Scrollback was unsearchable.** 1 200-line cap, no find — while live sessions
+  held 1 447 / 782 / 737 messages.
+- **The host protocol serialises everything** (`tui-host/index.ts:80-85`) → a GUI
+  could not poll status during a chat.
+- **ADR-010's "missing system libraries" was WRONG for this host.** All five
+  Tauri-v2 deps present (webkit2gtk 2.54.1, jsc 2.54.1, libsoup 3.8.0, gtk 3.24.52,
+  ayatana-appindicator3 0.6.1). The old finding came from Debian `apt` names applied
+  to an Arch host.
+
+### 🔌 The seam that already existed
+
+`src/infra/tui-host/` = versioned NDJSON RPC over stdio, 37 capabilities, and
+`interaction.ts:98` says it is *"the stdio-json protocol mode used by GUI
+consumers"*. A Tauri GUI is a **second client of a protocol written for it** — not
+a project from scratch.
+
+### 🛠️ What was built (Layer 1)
+
+Real caret · editable multi-line prompt (Alt+Enter/Left/Right/Delete/Ctrl+A/E) ·
+`Ctrl+F` scrollback search with live counter and reverse-video hits · `Ctrl+Y`
+copy-to-clipboard over OSC 52 · `F5` refresh. 167 unit tests, Rust workspace green.
+
+**Measured, same pty, same keystrokes ("hello", Left, Left, X):**
+before → `> helloX`, caret invisible; after → `> helXlo`, caret under the X.
+Latency unchanged: 7.9 ms median on both.
+
+### 🧠 Lessons (keep)
+
+1. **crossterm reads the terminal size from `/dev/tty`, not stdout.** A child that
+   inherits a controlling terminal lays out for *that* one while writing to the pty.
+   Every pty-based TUI measurement needs `setsid` — else you measure the wrong screen.
+2. **Ratatui renders differentially**: `> hello` never appears as a contiguous
+   substring. Measure escape sequences (`ESC[?25h`, `ESC[7m`, `ESC[r;cH`), not text.
+3. **"Merged" ≠ "done".** Automerge merged the branch as it stood when the PR was
+   *opened* — 10 h before the later commits. Check `origin/main`'s content, not the
+   PR status.
+4. A shared `CARGO_TARGET_DIR` across worktrees collides on the output binary and
+   Cargo will not relink a "fresh" unit — `cargo clean -p <crate>` first.
+
+### 📁 Files
+
+`docs/cockpit-core-adr-011.md` · `docs/tui-cockpit-playbook.md` · `memory/2026-10-27.md`
 
 ---
 
